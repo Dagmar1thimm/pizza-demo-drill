@@ -29,13 +29,13 @@
 					<input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large Pizza<br>
 				</div>
 				<div class="menu">
-					<h3>Meats:</h3>
-					<input class="meats" type="checkbox" name="Meat" value="Pepperoni"> Pepperoni<br>
-					<input class="meats" type="checkbox" name="Meat" value="Sausage"> Sausage <br>
-					<input class="meats" type="checkbox" name="Meat" value="Canadian Bacon"> Canadian Bacon<br> 
-					<input class="meats" type="checkbox" name="Meat" value="Ground Beef"> Ground Beef<br>
-					<input class="meats" type="checkbox" name="Meat" value="Anchovy"> Anchovy<br>
-					<input class="meats" type="checkbox" name="Meat" value="Chicken"> Chicken<br>
+					<h3>Meat:</h3>
+					<input class="meat" type="checkbox" name="Meat" value="Pepperoni"> Pepperoni<br>
+					<input class="meat" type="checkbox" name="Meat" value="Sausage"> Sausage <br>
+					<input class="meat" type="checkbox" name="Meat" value="Canadian Bacon"> Canadian Bacon<br> 
+					<input class="meat" type="checkbox" name="Meat" value="Ground Beef"> Ground Beef<br>
+					<input class="meat" type="checkbox" name="Meat" value="Anchovy"> Anchovy<br>
+					<input class="meat" type="checkbox" name="Meat" value="Chicken"> Chicken<br>
 				</div>
 				
 				<div class="menu">
@@ -78,30 +78,13 @@
 				<br>
 				<br>
 				
-				
-				<div class="container">
-				  <div class="row">
-					<div class="col">
-					 <div id="title1">
-						<h3>Your Order</h3>
-					</div>
-					</div>
-					<div class="col">
-						<div id="title2">
-							<h3>Subtotal</h3>
-						</div>
-					</div>
-				  </div>
-				</div>
-				
 					<div id="showText"></div>
 					<div id="totalPrice"></div>
 				</div>
 			</form>
 		</div>
 		
-		<script src="final_drill_basic.js">
-
+		<script>
 
 function getReceipt() {
 	// This initializes our string so it can get passed from  
@@ -157,18 +140,21 @@ function getMeat(runningTotal,text1) {
 	console.log("Purchase Total: "+"$"+runningTotal+".00");
 	document.getElementById("showText").innerHTML=text1;
 	document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+	getVeggi(runningTotal,text1); // All three of these variables will be passed on to each function
+};
 	
 function getVeggi(runningTotal,text1) {
 	var veggiTotal = 0;
 	var selectedVeggi = [];
 	var veggiArray = document.getElementsByClassName("veggi");
-	for (var k = 0; j < veggiArray.length; k++) {
+	for (var k = 0; k < veggiArray.length; k++) {
 		if (veggiArray[k].checked) {
 			selectedVeggi.push(veggiArray[k].value);
 			console.log("selected veggi item: ("+veggiArray[k].value+")");
 			text1 = text1+veggiArray[k].value+"<br>";
 		}
 	}
+	
 	var veggiCount = selectedVeggi.length;
 	if (veggiCount > 1) {
 		veggiTotal = (veggiCount - 1);
@@ -182,8 +168,10 @@ function getVeggi(runningTotal,text1) {
 	console.log("Purchase Total: "+"$"+runningTotal+".00");
 	document.getElementById("showText").innerHTML=text1;
 	document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+	getCheese(runningTotal,text1); // All three of these variables will be passed on to each function
+};
 	
-function getCheese() {
+function getCheese(runningTotal,text1) {
 	var text1 = "<h3>You Ordered:</h3>";
 	var cheeseTotal = 0;
 	var cheeseTotal = 0;
@@ -203,10 +191,10 @@ function getCheese() {
 	console.log(selectedCheese+" = $"+cheeseTotal+".00");
 	console.log("cheese text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
-	getCheese(runningTotal,text1); // All three of these variables will be passed on to each function
+	getCrust(runningTotal,text1); // All three of these variables will be passed on to each function
+};
 	
-	
-function getCrust() {
+function getCrust(runningTotal,text1) {
 	var text1 = "<h3>You Ordered:</h3>";
 	var crustTotal = 0;
 	var crustTotal = 0;
@@ -226,9 +214,10 @@ function getCrust() {
 	console.log(selectedCrust+" = $"+crustTotal+".00");
 	console.log("crust text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
-	getCrust(runningTotal,text1); // All three of these variables will be passed on to each function
+	getSauce(runningTotal,text1); // All three of these variables will be passed on to each function
+	};
 	
-function getSauce() {
+function getSauce(){
 	var text1 = "<h3>You Ordered:</h3>";
 	var sauceTotal = 0;
 	var sauceTotal = 0;
@@ -246,8 +235,7 @@ function getSauce() {
 	console.log(selectedSauce+" = $"+sauceTotal+".00");
 	console.log("sauce text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
-	getSauce(runningTotal,text1); // All three of these variables will be passed on to each function
-	
+		};
 </script>
 
   
