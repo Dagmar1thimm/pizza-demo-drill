@@ -174,9 +174,9 @@ function getVeggi(runningTotal,text1) {
 function getCheese(runningTotal,text1) {
 	var text1 = "<h3>You Ordered:</h3>";
 	var cheeseTotal = 0;
-	var cheeseTotal = 0;
+	var selectedCheese = [];
 	var cheeseArray = document.getElementsByClassName("cheese");
-	for (var l = 0; l < cheeseArray.length; l++) {
+	for (var l = 0; l < crustArray.length; l++) {
 		if (cheeseArray[l].checked) {
 			var selectedCheese = cheeseArray[l].value;
 			text1 = text1+selectedCheese+"<br>";
@@ -187,17 +187,19 @@ function getCheese(runningTotal,text1) {
 	} else if (selectedCheese === "No Cheese", "Regular") {
 		cheeseTotal = 0;
 	}
-	runningTotal = cheeseTotal;
+	runningTotal = (runnigTotal + cheeseTotal);
 	console.log(selectedCheese+" = $"+cheeseTotal+".00");
 	console.log("cheese text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
+	document.getElementById("showText").innerHTML=text1;
+	document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
 	getCrust(runningTotal,text1); // All three of these variables will be passed on to each function
 };
 	
 function getCrust(runningTotal,text1) {
 	var text1 = "<h3>You Ordered:</h3>";
 	var crustTotal = 0;
-	var crustTotal = 0;
+	var selectedCrust = [];
 	var crustArray = document.getElementsByClassName("crust");
 	for (var m = 0; m < crustArray.length; m++) {
 		if (crustArray[m].checked) {
@@ -206,14 +208,16 @@ function getCrust(runningTotal,text1) {
 		}
 	}
 	if (selectedCrust === "Cheese Stuffed Crust") {
-		cheeseTotal = 3;
+		crustTotal = 3;
 	} else if (selectedCrust === "Plain Crust", "Garlic Butter Crust", "Spicy Crust", "House Special Crust") {
 		crustTotal = 0;
 	}
-	runningTotal = crustTotal;
+	runningTotal = (runningTotal + crustTotal);
 	console.log(selectedCrust+" = $"+crustTotal+".00");
 	console.log("crust text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
+	document.getElementById("showText").innerHTML=text1;
+	document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
 	getSauce(runningTotal,text1); // All three of these variables will be passed on to each function
 	};
 	
