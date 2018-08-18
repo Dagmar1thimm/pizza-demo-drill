@@ -176,7 +176,7 @@ function getCheese(runningTotal,text1) {
 	var cheeseTotal = 0;
 	var selectedCheese = [];
 	var cheeseArray = document.getElementsByClassName("cheese");
-	for (var l = 0; l < crustArray.length; l++) {
+	for (var l = 0; l < cheeseArray.length; l++) {
 		if (cheeseArray[l].checked) {
 			var selectedCheese = cheeseArray[l].value;
 			text1 = text1+selectedCheese+"<br>";
@@ -187,7 +187,7 @@ function getCheese(runningTotal,text1) {
 	} else if (selectedCheese === "No Cheese", "Regular") {
 		cheeseTotal = 0;
 	}
-	runningTotal = (runnigTotal + cheeseTotal);
+	runningTotal = (runningTotal + cheeseTotal);
 	console.log(selectedCheese+" = $"+cheeseTotal+".00");
 	console.log("cheese text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
@@ -221,10 +221,10 @@ function getCrust(runningTotal,text1) {
 	getSauce(runningTotal,text1); // All three of these variables will be passed on to each function
 	};
 	
-function getSauce(){
+function getSauce(runningTotal + sauceTotal){
 	var text1 = "<h3>You Ordered:</h3>";
 	var sauceTotal = 0;
-	var sauceTotal = 0;
+	var selectedSauce = 0;
 	var sauceArray = document.getElementsByClassName("sauce");
 	for (var l = 0; l < sauceArray.length; l++) {
 		if (sauceArray[l].checked) {
@@ -235,7 +235,7 @@ function getSauce(){
 	if (selectedSauce === "Marinara sauce", "White sauce", "Barbeque sauce", "No sauce") {
 		sauceTotal = 0;
 	}
-	runningTotal = sauceTotal;
+	runningTotal = (runningTotal + sauceTotal);
 	console.log(selectedSauce+" = $"+sauceTotal+".00");
 	console.log("sauce text1: "+text1);
 	console.log("subtotal: $"+runningTotal+".00");
